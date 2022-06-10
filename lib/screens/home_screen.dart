@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   
   double tip = 0.0;
   String tipvalue = "0.0";
 
@@ -34,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final prefs = await SharedPreferences.getInstance();
     final double percent = prefs.getDouble('percent') ?? 15;
 
-
     return percent;
   }
 
@@ -42,8 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     const fontStyle = TextStyle(fontSize: 45);
     getDefaultValues().then((value) => {controladorP.text = value.toString()});
-    
-    
 
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 final route = MaterialPageRoute(
                     builder: (context) => const ConfigurationScreen());
                 Navigator.push(context, route);
-                
               },
             )
           ])),
@@ -96,16 +91,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color.fromARGB(251, 235, 150, 31)))),
             ),
             TextFormField(
-              enabled: false,
-              
-              controller: controladorP,
-              decoration: const InputDecoration(
-                  labelText: "Percentage %",
-                  labelStyle: TextStyle(color: Color.fromARGB(255, 24, 18, 0)),
-                  border: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromARGB(120, 195, 195, 23))))
-            ),
+                enabled: false,
+                controller: controladorP,
+                decoration: const InputDecoration(
+                    labelText: "Percentage %",
+                    labelStyle:
+                        TextStyle(color: Color.fromARGB(255, 24, 18, 0)),
+                    border: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(120, 195, 195, 23))))),
             ElevatedButton(
                 onPressed: () {
                   if (!_claveFormulario.currentState!.validate()) {
@@ -118,15 +112,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   tip = amount * (percent / 100);
                   tipvalue = tip.toStringAsFixed(2);
-                  
+
                   print(tipvalue);
-                  setState(() {
-                  });
+                  setState(() {});
                 },
                 style: ElevatedButton.styleFrom(
                     primary: const Color.fromARGB(251, 235, 150, 31)),
                 child: const Text("Calculate Tip")),
-            Text("Tip to pay \$$tipvalue", style: fontStyle,textAlign: TextAlign.center,)
+            Text(
+              "Tip to pay \$$tipvalue",
+              style: fontStyle,
+              textAlign: TextAlign.center,
+            )
           ],
         ),
       )),
