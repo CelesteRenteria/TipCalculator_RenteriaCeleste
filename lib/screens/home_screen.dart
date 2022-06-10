@@ -13,16 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
-  @override
-  initState(){
-    setState(() {
-      
-    });
-    super.initState();
-
-  }
-  
+   
   double tip = 0.0;
   String tipvalue = "0.0";
 
